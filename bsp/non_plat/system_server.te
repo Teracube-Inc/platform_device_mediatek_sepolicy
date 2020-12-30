@@ -224,3 +224,6 @@ get_prop(system_server, mtk_heavy_loading_prop)
 # Operation : nwk_opt hal
 # Purpose : nwk_opt hal permission
 hal_client_domain(system_server, hal_nwk_opt)
+
+allow system_server proc_fliperfs:dir search;
+allow system_server tkcore_systa_file:dir { getattr open read };

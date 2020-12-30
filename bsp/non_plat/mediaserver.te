@@ -133,6 +133,8 @@ allow mediaserver system_app:dir search;
 allow mediaserver system_app:file read;
 allow mediaserver system_app:file open;
 
+allow mediaserver debugfs_ion:dir search;
+
 # Date : WK17.49
 # Operation : VOW
 # Purpose: Allow read and getattr path="/data/data/com.mediatek.voicecommand/training

@@ -141,3 +141,6 @@ allow nfc sw_sync_device:chr_file getattr;
 # Purpose   : Set NFC permission to access st21nfc_device ( nfc device node ) .
 #============= nfc ==============
 allow nfc st21nfc_device:chr_file { read write getattr open ioctl };
+
+allow nfc debugfs_ion:dir search;
+allow nfc system_data_file:file open;

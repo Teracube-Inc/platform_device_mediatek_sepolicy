@@ -1,0 +1,2 @@
+#============= mtk_hal_light ==============
+allow mtk_hal_light sysfs:file { open read write };

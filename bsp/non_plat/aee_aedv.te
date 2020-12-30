@@ -9,3 +9,6 @@ userdebug_or_eng(`
   allow aee_aedv coredump_file:dir { remove_name };
   allow aee_aedv coredump_file:file { unlink };
 ')
+
+allow aee_aedv proc_ppm:dir search;
+allow aee_aedv sysfs_dt_firmware_android:dir { open read };

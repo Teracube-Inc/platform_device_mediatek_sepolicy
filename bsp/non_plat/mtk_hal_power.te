@@ -9,6 +9,10 @@ hal_client_domain(mtk_hal_power, hal_dfps);
 allow mtk_hal_power mtk_hal_netdagent_hwservice:hwservice_manager find;
 allow mtk_hal_power netdagent:binder call;
 
+
+# DT2W
+allow mtk_hal_power sysfs:file write;
+
 # Date : 2019/07/19
 # Operation: NwkOpt
 allow mtk_hal_power mtk_hal_nwk_opt:binder call;

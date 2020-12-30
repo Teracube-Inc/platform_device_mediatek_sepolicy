@@ -32,3 +32,5 @@ allow init proc_drop_caches:file w_file_perms;
 # Purpose: Allow to setattr for duraspeed.rc
 allow init proc_cpu_loading:file setattr;
 allow init proc_low_memory_hit:file setattr;
+
+allow init socket_device:sock_file { create setattr unlink };
