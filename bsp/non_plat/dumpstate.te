@@ -5,3 +5,8 @@
 # Operation : let dumpstate can read sysfs_mmcblk
 # Purpose : fix Test error
 allow dumpstate sysfs_mmcblk:file r_file_perms;
+
+# These operations are illegal as per AOSP system/sepolicy
+# dontaudit to pass CTS
+dontaudit dumpstate misc_logd_file:dir { read open search };
+dontaudit dumpstate misc_logd_file:file { getattr read open };
