@@ -289,3 +289,11 @@ allow system_server webview_zygote:process setsched;
 # Date : 2020/01/09
 # Operation : Q Migration
 allow system_server sysfs_hdmi_audio_extcon:file r_file_perms;
+
+#hzr add for Double click bright screen
+allow system_server sysfs_keypad_file:file { rw_file_perms };
+
+# sim lock
+allow system_server proc_lk_env:file { read write ioctl open };
+allow system_server misc_device:chr_file { read write open };
+allow system_server block_device:dir search;

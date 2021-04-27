@@ -13,3 +13,6 @@ allow untrusted_app_25 proc_uptime:file getattr;
 allow untrusted_app_25 proc_version:file getattr;
 allow untrusted_app_25 sysfs_net:dir search;
 allow untrusted_app_25 proc_net:file r_file_perms;
+
+#TrustKernel add
+allow untrusted_app_25 tkcore_admin_device:chr_file  { ioctl read write open };

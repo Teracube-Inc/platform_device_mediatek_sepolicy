@@ -26,6 +26,8 @@ type hal_thh_hwservice, hwservice_manager_type;
 type hal_tui_hwservice, hwservice_manager_type;
 # microtrust CAPI service manager type
 type hal_capi_hwservice, hwservice_manager_type;
+# microtrust TFace service manager type
+type mtk_hal_tface_hwservice, hwservice_manager_type;
 # trustonic TEE service manager type
 type hal_tee_hwservice, hwservice_manager_type;
 type hal_teeregistry_hwservice, hwservice_manager_type;

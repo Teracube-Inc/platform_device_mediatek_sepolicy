@@ -20,3 +20,5 @@ hal_client_domain(priv_app, hal_allocator)
 # Operation : Migration
 # Purpose :allow priv_app to search debugfs_ion dir
 allow priv_app debugfs_ion:dir search;
+##hzr add
+allow priv_app sysfs_keypad_file:file { read open getattr };

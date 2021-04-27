@@ -67,6 +67,9 @@
 /dev/teei_fp u:object_r:teei_fp_device:s0
 /dev/ut_keymaster u:object_r:ut_keymaster_device:s0
 /dev/utr_tui u:object_r:utr_tui_device:s0
+/dev/teei_loader u:object_r:tee_device:s0
+# 4Mversion use start 
+/vendor/bin/istorageproxyd u:object_r:tee_exec:s0
 /dev/dri/card0 u:object_r:dri_device:s0
 
 /dev/socket/wo_epdg_action(/.*)? u:object_r:wo_epdg_action_socket:s0
@@ -77,6 +80,17 @@
 
 #############################
 # System files
+
+# Microtrust TEEI sysfs files
+/sys/(devices\/platform|devices)/utos(/.*)?  u:object_r:teei_control_file:s0
+
+#############################
+# microtrust TFace hidl service
+#
+/(system\/vendor|vendor)/bin/hw/vendor\.microtrust\.hardware\.tface@1\.0-service u:object_r:hal_tface_exec:s0
+#############################
+
+/(system\/vendor|vendor)/bin/teei_loader u:object_r:tee_exec:s0
 #
 # Trustonic TEE system files
 /(vendor|system\/vendor)/app/mcRegistry(/.*)? u:object_r:mobicore_vendor_file:s0

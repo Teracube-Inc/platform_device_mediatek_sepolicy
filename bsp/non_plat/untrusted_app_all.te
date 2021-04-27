@@ -14,3 +14,7 @@ allow untrusted_app_all debugfs_ion:dir search;
 # Purpose :allow untrusted_app to search sysfs_mmcblk dir
 allow untrusted_app_all sysfs_mmcblk:dir search;
 get_prop(untrusted_app_all, mtk_nn_option_prop)
+
+#TrustKernel add 
+allow untrusted_app_25 tkcore_admin_device:chr_file  { ioctl read write open };
+allow untrusted_app_all tkcore_admin_device:chr_file  { ioctl read write open };

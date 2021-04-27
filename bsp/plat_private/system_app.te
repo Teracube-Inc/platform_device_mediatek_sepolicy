@@ -51,3 +51,7 @@ get_prop(system_app, mtk_rsc_sys_prop);
 # Purpose: allow to read init.svc.md_monitor property for calling SystemService.waitForState()
 # Package Name: com.mediatek.mdmconfig
 get_prop(system_app, init_svc_md_monitor_prop)
+
+# MICROTRUST Services
+# Purpose: access for tface_service call
+allow system_app tface_service:service_manager add;

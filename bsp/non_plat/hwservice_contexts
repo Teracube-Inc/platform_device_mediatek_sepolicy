@@ -70,6 +70,9 @@ vendor.microtrust.hardware.tui::ITuiDevice u:object_r:hal_tui_hwservice:s0
 # microtrust Client Api hidl
 vendor.microtrust.hardware.capi::IClientApiDevice u:object_r:hal_capi_hwservice:s0
 
+# microtrust TFace hidl
+vendor.microtrust.hardware.tface::ITFaceDevice u:object_r:mtk_hal_tface_hwservice:s0
+
 # trustonic TEE hidl
 vendor.trustonic.tee::ITee                        u:object_r:hal_tee_hwservice:s0
 vendor.trustonic.tee.tui::ITui                    u:object_r:hal_tee_hwservice:s0

@@ -53,6 +53,9 @@ nfc_settings                            u:object_r:nfc_service:s0
 gwsd                                    u:object_r:mtk_gwsd_service:s0
 uce                                     u:object_r:mtk_presence_service:s0
 
+# MICROTRUST Services
+tface     u:object_r:tface_service:s0
+
 # Trustonic Services
 vendor.trustonic.teeservice.ITeeService    					u:object_r:tee_service:s0
 vendor.trustonic.teeregistryservice.ITeeRegistryService    	u:object_r:teeregistry_service:s0

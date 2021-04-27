@@ -1,0 +1,8 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+# Date: 2020/06/11
+# Operation: GPU to MDP
+# Purpose: Allow app GPU library to use MDP HIDL
+hal_client_domain(priv_app, hal_mms)

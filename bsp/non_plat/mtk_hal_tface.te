@@ -1,0 +1,9 @@
+# HwBinder IPC from client to server
+binder_call(mtk_hal_tface_client, mtk_hal_tface_server);
+
+add_hwservice(mtk_hal_tface_server, mtk_hal_tface_hwservice)
+allow mtk_hal_tface_client mtk_hal_tface_hwservice:hwservice_manager find;
+
+allow system_app mtk_hal_tface_hwservice:hwservice_manager find;
+allow system_app hal_tface:binder call;
+allow hal_tface tee_device:chr_file { read write open ioctl };

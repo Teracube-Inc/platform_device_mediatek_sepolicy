@@ -42,6 +42,9 @@ genfscon proc /mtk_memcfg/slabtrace u:object_r:proc_slabtrace:s0
 genfscon proc /mtk_cmdq_debug/status u:object_r:proc_cmdq_debug:s0
 genfscon proc /cpuhvfs/dbg_repo u:object_r:proc_dbg_repo:s0
 
+# ybx add
+genfscon proc /icn85xx_tool u:object_r:proc_icn85xx_tool:s0
+
 # mtk EM FreqHopping setting
 genfscon proc /freqhopping/freqhopping_debug u:object_r:proc_freqhop:s0
 genfscon proc /freqhopping/status u:object_r:proc_freqhop:s0

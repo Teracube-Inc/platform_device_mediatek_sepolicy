@@ -17,3 +17,10 @@ allow untrusted_app_25 sysfs_batteryinfo:dir search;
 #allow untrusted_app_25 sysfs_batteryinfo:file { getattr open read };
 allow untrusted_app_25 sysfs_therm:dir r_dir_perms;
 allow untrusted_app_25 sysfs_therm:file r_file_perms;
+
+# Date: 2020/05/20
+# Operation: GPU to MDP to CMDQ security
+# Purpose: Allow same-process GPU library to call MDP/CMDQ via MTK MDP HAL
+#          from app process, instead of via same-process MDP library, to
+#          protect CMDQ device node.
+hal_client_domain(untrusted_app_25, hal_mms)

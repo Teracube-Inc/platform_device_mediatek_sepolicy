@@ -1,0 +1,10 @@
+type hal_tface, domain;
+hal_server_domain(hal_tface, mtk_hal_tface);
+
+type hal_tface_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_tface);
+
+hwbinder_use(hal_tface);
+
+hal_client_domain(hal_tface, hal_capi)
+hal_client_domain(hal_tface, hal_allocator)

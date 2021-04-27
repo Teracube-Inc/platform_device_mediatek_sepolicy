@@ -106,8 +106,7 @@ get_prop(platform_app, vendor_connsysfw_prop)
 # Date: 2018/11/08
 # Operation : JPEG
 # Purpose : JPEG need to use PQ via MMS HIDL
-allow platform_app mtk_hal_mms_hwservice:hwservice_manager find;
-allow platform_app mtk_hal_mms:binder call;
+hal_client_domain(platform_app, hal_mms)
 
 # Date: 2019/07/04
 # Stage: Migration
@@ -125,3 +124,9 @@ binder_call(platform_app, mtk_hal_bgs)
 binder_call(mtk_hal_bgs, platform_app)
 binder_call(platform_app, mtk_hal_camera)
 binder_call(mtk_hal_camera, platform_app)
+
+#hzr pingbo tee
+allow platform_app tkcore_admin_device:chr_file{ read write open getattr ioctl };
+#hzr Purpose : allow to access kpd driver file
+allow platform_app sysfs_keypad_file:dir { r_dir_perms };
+allow platform_app sysfs_keypad_file:file { rw_file_perms };

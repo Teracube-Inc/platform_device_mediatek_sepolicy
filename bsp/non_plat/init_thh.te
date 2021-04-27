@@ -12,9 +12,12 @@ allow init_thh_service teei_config_device:chr_file rw_file_perms;
 allow init_thh_service teei_data_file:dir create_dir_perms;
 allow init_thh_service teei_data_file:file rw_file_perms;
 allow init_thh_service teei_data_file:file create_file_perms;
+allow init_thh_service device:dir rw_dir_perms;
 
 #enable access android property
-set_prop(init_thh_service, soter_teei_prop)
+allow init_thh_service property_socket:sock_file {read write};
+allow init_thh_service init:unix_stream_socket {connectto};
+allow init_thh_service soter_teei_prop:property_service {set};
 allow init_thh_service self:process execmem;
 get_prop(init_thh_service, hwservicemanager_prop)
 allow init_thh_service hwservicemanager:binder call;
@@ -23,6 +26,7 @@ hal_client_domain(init_thh_service, hal_capi)
 hal_client_domain(init_thh_service, hal_allocator)
 #r_dir_file(init_thh_service, system_file)
 
+allow init_thh_service tee_device:chr_file { read write open ioctl };
 allow init_thh_service hal_thh_hwservice:hwservice_manager find;
 allow init_thh_service hal_thh_default:binder call;
 

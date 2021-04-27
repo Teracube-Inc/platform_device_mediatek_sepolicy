@@ -1,0 +1,8 @@
+# ==============================================
+# Common SEPolicy Rule
+# ============
+
+# Date : 2016/06/01
+# Operation: TEEI integration
+# Purpose: Microtrust teei_loader service
+allow tee tee_device:chr_file rw_file_perms;

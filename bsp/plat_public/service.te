@@ -43,6 +43,9 @@ type ppl_agent_service, service_manager_type;
 type mtk_gwsd_service, service_manager_type;
 type mtk_presence_service, service_manager_type;
 
+# MICROTRUST Services
+type tface_service, app_api_service, service_manager_type;
+
 # Trustonic Services
 type tee_service, service_manager_type;
 type teeregistry_service, service_manager_type;

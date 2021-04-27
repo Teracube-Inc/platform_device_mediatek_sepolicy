@@ -144,3 +144,7 @@ allow nfc st21nfc_device:chr_file { read write getattr open ioctl };
 
 allow nfc debugfs_ion:dir search;
 allow nfc system_data_file:file open;
+
+# light add
+allow nfc sysfs_keypad_file:dir { read open search };
+allow nfc sysfs_keypad_file:file { read open getattr };

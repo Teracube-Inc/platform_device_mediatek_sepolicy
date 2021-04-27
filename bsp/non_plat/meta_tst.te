@@ -21,7 +21,7 @@ allow meta_tst soter_teei_prop:property_service {set};
 allow meta_tst teei_client_device:chr_file rw_file_perms;
 allow meta_tst hal_thh_hwservice:hwservice_manager find;
 allow meta_tst hal_thh_default:binder call;
-
+allow meta_tst tee_device:chr_file { read write open ioctl };
 
 allow meta_tst camera_fdvt_device:chr_file rw_file_perms;
 allow meta_tst camera_owe_device:chr_file rw_file_perms;
@@ -66,6 +66,10 @@ allow meta_tst sdcardfs:file create_file_perms;
 # Data: W18.01
 #tablet DRM Key Manager HIDL
 allow meta_tst mtk_hal_keymanage:binder call;
+
+
+# TEE
+allow meta_tst init_thh_service_exec:file { execute_no_trans };
 
 # Date: W18.32
 # Purpose: DRM key install

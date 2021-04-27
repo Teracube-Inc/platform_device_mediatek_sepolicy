@@ -117,6 +117,9 @@ type mediaserver_data_file, file_type, data_file_type;
 type mediacodec_data_file, file_type, data_file_type;
 type connsyslog_data_vendor_file, file_type, data_file_type;
 
+# ybx add
+type proc_icn85xx_tool, fs_type, proc_type, mlstrustedobject;
+
 #mobilelog data/misc/mblog
 type logmisc_data_file, file_type, data_file_type, core_data_file_type;
 

@@ -237,3 +237,11 @@ get_prop(radio, vendor_usb_prop);
 
 ##longliang engineermode
 allow radio sysfs_keypad_file:file { read getattr };
+
+##qyl add aee
+allow radio anr_data_file:dir {search open read getattr };
+allow radio aee_exp_data_file:dir {search open read getattr };
+allow radio anr_data_file:file {read open getattr};
+allow radio aee_exp_data_file:file {read open getattr};
+allow radio aee_exp_vendor_file:dir {search open read getattr };
+allow radio aee_exp_vendor_file:file {read open getattr};

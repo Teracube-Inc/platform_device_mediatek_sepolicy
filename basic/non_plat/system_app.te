@@ -32,8 +32,7 @@ allow system_app aee_exp_data_file:dir r_dir_perms;
 # Date: 2018/11/08
 # Operation : JPEG
 # Purpose : JPEG need to use PQ via MMS HIDL
-allow system_app mtk_hal_mms_hwservice:hwservice_manager find;
-allow system_app mtk_hal_mms:binder call;
+hal_client_domain(system_app, hal_mms)
 
 # Date: 2019/06/14
 # Operation : Migration
@@ -48,3 +47,18 @@ allow system_app mtk_hal_hdmi:binder call;
 allow system_app self:netlink_kobject_uevent_socket {read bind create setopt };
 # system_app need to read from sysfs /sys/class/switch/hdmi/state
 r_dir_file(system_app, sysfs_switch);
+
+##longliang factorytest
+allow system_app sysfs_keypad_file:dir search;
+allow system_app sysfs_keypad_file:file { read write open getattr };
+
+#hzr add for runtimetest
+get_prop(system_app, vendor_runtimetest_prop)
+set_prop(system_app, vendor_runtimetest_prop)
+
+#hzr pingbo tee
+allow system_app tkcore_admin_device:chr_file{ read write open getattr ioctl };
+
+# sim lock
+allow system_app misc_device:chr_file { read write open };
+allow system_app block_device:dir search; 

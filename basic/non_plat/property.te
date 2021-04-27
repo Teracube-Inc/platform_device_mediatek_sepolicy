@@ -327,3 +327,5 @@ type mtk_nn_option_prop, property_type;
 #============system wfc service property===========
 type mtk_wfc_serv_prop, property_type;
 
+#hzr add for runtimetest
+type vendor_runtimetest_prop, property_type, extended_core_property_type;

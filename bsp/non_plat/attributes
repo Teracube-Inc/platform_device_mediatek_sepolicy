@@ -37,6 +37,11 @@ attribute hal_thh;
 attribute hal_thh_client;
 attribute hal_thh_server;
 
+# TFace ATTESTATION HIDL
+attribute mtk_hal_tface;
+attribute mtk_hal_tface_client;
+attribute mtk_hal_tface_server;
+
 # TUI ATTESTATION HIDL
 attribute hal_tui;
 attribute hal_tui_client;
