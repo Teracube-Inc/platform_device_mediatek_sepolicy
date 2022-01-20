@@ -1,0 +1,12 @@
+#=============allow mtkmal to start volte==============
+type ctl_volte_imcb_prop, property_type;
+type ctl_volte_stack_prop, property_type;
+type ctl_volte_ua_prop, property_type;
+type volte_prop, property_type, mtk_core_property_type;
+
+#=============allow wifi offload deamon  ==============
+type mtk_wod_prop, property_type, mtk_core_property_type;
+type persist_wod_prop, property_type, mtk_core_property_type;
+
+#=============allow volte md status deamon  ==============
+type mtk_md_status_prop, property_type;

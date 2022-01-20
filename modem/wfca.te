@@ -1,0 +1,50 @@
+# ==============================================
+# Policy File of /system/bin/wfca Executable File 
+
+# ==============================================
+# Type Declaration
+# ==============================================
+type wfca, domain, mtkimsmddomain;
+type wfca_exec, exec_type, file_type, vendor_file_type;
+
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+# permissive wfca;
+init_daemon_domain(wfca)
+net_domain(wfca)
+
+# Date : WK14.42
+# Operation : Migration 
+# Purpose : for WFCA send RTP/RTCP
+allow wfca socket_device:sock_file {create write unlink};
+allow wfca socket_device:dir {write remove_name add_name};
+allow wfca self:capability { net_raw setuid setgid net_admin};
+allow wfca self:udp_socket { create write bind read setopt ioctl getattr shutdown };
+allow wfca node:udp_socket node_bind;
+allow wfca port:udp_socket name_bind;
+allow wfca fwmarkd_socket:sock_file write;
+
+# Date : 2015/03/27
+# Operation : Migration
+# Purpose : for access ccci device
+allow wfca ccci_device:chr_file { read write open ioctl };
+
+# Purpose : for WakeUpLock
+allow wfca sysfs_wake_lock:file { read write open };
+
+# Purpose : for raw socket
+allow wfca self:rawip_socket { create write bind setopt read getattr};
+allow wfca node:rawip_socket {node_bind}; 
+
+# Date : 2015/06/25
+# Purpose : for UA socket pass
+allow wfca volte_ua:fd use;
+allow wfca volte_ua:udp_socket {read write setopt getattr getopt shutdown};
+
+# Purpose : For Ping ICMP feature
+allow wfca self:packet_socket { read create setopt };
+
+# Purpose : add Vinson permission 
+dontaudit wfca self:capability dac_override;
+allow wfca self:capability2 block_suspend;

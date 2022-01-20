@@ -1,0 +1,93 @@
+# ==============================================
+# Policy File of /system/bin/epdg_wod Executable File 
+
+# ==============================================
+# Type Declaration
+# ==============================================
+type epdg_wod_exec, exec_type, file_type, vendor_file_type;
+type epdg_wod, domain, mtkimsmddomain;
+
+
+#20141222 Add EPDG socket usage
+type wod_ipsec_conf_file, file_type, data_file_type;
+type wod_apn_conf_file, file_type, data_file_type;
+type wod_action_socket, file_type;
+type wod_sim_socket, file_type;
+type wod_ipsec_socket, file_type;
+type wod_dns_socket, file_type;
+
+#move to property.te for android P
+#=============allow wifi offload deamon  ==============
+#type mtk_wod_prop, property_type, mtk_core_property_type;
+#type persist_wod_prop, property_type, mtk_core_property_type;
+
+
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+init_daemon_domain(epdg_wod)
+net_domain(epdg_wod)
+
+domain_auto_trans(epdg_wod, starter_exec, ipsec)
+domain_auto_trans(epdg_wod, charon_exec, ipsec)
+domain_auto_trans(epdg_wod, starter_exec, ipsec)
+domain_auto_trans(epdg_wod, stroke_exec, ipsec)
+
+# Date: WK14.52
+# Operation : Feature for ePDG
+# Purpose :  handle tunnel interface
+allow epdg_wod vendor_file:file { read getattr open execute execute_no_trans lock};
+allow epdg_wod self:tun_socket { relabelfrom relabelto create };
+allow epdg_wod tun_device:chr_file { read write ioctl open getattr };
+allow epdg_wod self:netlink_route_socket { setopt nlmsg_write read bind create nlmsg_read write getattr };
+allow epdg_wod self:capability { net_admin kill };
+allow epdg_wod vendor_data_file:dir getattr;
+
+# Purpose :  update ipsec deamon
+allow epdg_wod ipsec_exec:file { read getattr open execute execute_no_trans };
+
+# Purpose : send signal to process (ipsec/charon)
+allow epdg_wod ipsec:process { signal sigkill signull };
+
+# Purpose :  set property for debug messages
+allow epdg_wod init:unix_stream_socket connectto;
+allow epdg_wod mtk_wod_prop:property_service set;
+allow epdg_wod property_socket:sock_file write;
+allow epdg_wod persist_wod_prop:property_service set;
+
+# Purpose :  create strongswan config file for IKEv2 Tunnel
+allow epdg_wod wod_apn_conf_file:dir { write read open add_name remove_name search };
+allow epdg_wod wod_apn_conf_file:file { write read create unlink open getattr };
+allow epdg_wod wod_ipsec_conf_file:file { write read create unlink open getattr };
+allow epdg_wod wod_ipsec_conf_file:dir { write read open add_name remove_name search };
+
+# tear_xfrm_policy
+allow epdg_wod self:netlink_xfrm_socket { write getattr setopt nlmsg_write read bind create };
+
+# Purpose : check tun device is ready
+allow epdg_wod self:udp_socket { create ioctl };
+allow epdg_wod self:capability sys_module;
+
+# Purpose : create symbolic link for /dev/tun
+allow epdg_wod device:dir { write add_name };
+allow epdg_wod device:lnk_file create;
+
+# Purpose: Kill Process
+allow epdg_wod system_server:process { signal signull };
+allow epdg_wod kernel:process signal;
+
+# Purpose: access iptables for mss
+allow epdg_wod self:capability net_raw;
+allow epdg_wod self:rawip_socket { getopt create setopt };
+
+# Purpose: communicate with NETD
+allow epdg_wod netd:unix_stream_socket connectto;
+allow epdg_wod netd_socket:sock_file write;
+allow netd epdg_wod:fd use;
+allow netd epdg_wod:tcp_socket { read write setopt getopt };
+allow netd epdg_wod:udp_socket {read write setopt getopt};
+
+# Purpose: use netutils-wrapper 
+domain_auto_trans(epdg_wod, netutils_wrapper_exec, netutils_wrapper)
+allow netutils_wrapper epdg_wod:fd use;
+allow netutils_wrapper epdg_wod:unix_stream_socket { read write };
