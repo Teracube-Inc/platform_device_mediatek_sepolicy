@@ -1,0 +1,59 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+# TODO:: Security Issue
+# Date : W1452
+# Operation : WVL1 Modular DRM IT
+# Purpose : Allow svp client alloc sec mem
+allow untrusted_app proc_secmem:file { read ioctl open };
+
+# TrustKernel add
+userdebug_or_eng(`
+	allow untrusted_app tkcore_admin_device:chr_file  { ioctl read write open };
+')
+
+# Date : 2014/09/04
+# Stage: BaseUT
+# Purpose :[Launcher2][View update graphics]
+# Package Name: com.android.launcher2
+# allow untrusted_app guiext-server:binder { transfer call };
+
+# Date : 2016/07/12
+# Operation : SQC
+# Purpose : allow untrusted_app access ntfs device
+allow untrusted_app fuseblk:dir search;
+allow untrusted_app fuseblk:file read;
+allow untrusted_app fuseblk:file rw_file_perms;
+
+# Date : WK16.35
+# Operation : untrusted_app support direct-coredump abort message
+# Purpose :
+# avc: denied { write } for name="aee_interim" dev="dm-0" ino=8236
+# scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:coredump_file:s0
+# tclass=dir permissive=0
+userdebug_or_eng(`
+  allow untrusted_app coredump_file:dir { write };
+')
+
+# Date : 2016/7/22
+# Operation: Migration
+# Purpose : Move from tk sepolicy for ViLTE
+allow untrusted_app vtservice:dir search;
+allow untrusted_app mediaserver:dir search;
+
+# Date: 2018/07/09
+# Operator: New feature for VSIM SQC
+# Purpose: allow vendor's osi to use tcp socket
+allow untrusted_app osi:tcp_socket { create connect write read bind accept listen getattr setattr getopt setopt };
+
+# Date: 2018/04/18
+# Purpose: Allow untrusted_app to use HIDL and access mtk_hal_neuralnetworks
+#allow untrusted_app hal_neuralnetworks_hwservice:hwservice_manager find;
+allow untrusted_app mtk_hal_neuralnetworks:binder { call transfer };
+allow untrusted_app debugfs_ion:dir search;
+
+# Date: 2019/01/28
+# Purpose: Allow untrusted_app to access mdlactl_device and vpu_device
+allow untrusted_app mdla_device:chr_file { rw_file_perms };
+allow untrusted_app vpu_device:chr_file { rw_file_perms };

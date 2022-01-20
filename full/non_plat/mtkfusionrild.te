@@ -1,0 +1,5 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+# For MAL MFI
+typeattribute rild mtkimsapdomain;

@@ -1,0 +1,7 @@
+# ==================================
+# Common SEPolicy Rule
+# ==================================
+
+# Kernel-4.14 migration, fix boot fail.
+allow installd vendor_configs_file:file map;
+

@@ -1,0 +1,7 @@
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+#=============allow terservice to set terservice property==============
+persist.vendor.ter u:object_r:terservice_prop:s0
+vendor.ter.service u:object_r:terservice_prop:s0

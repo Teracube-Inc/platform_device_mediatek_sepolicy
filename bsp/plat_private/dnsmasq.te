@@ -1,0 +1,6 @@
+# ==============================================
+# Common SEPolicy Rule
+# ============
+
+
+allow dnsmasq netd:file read;

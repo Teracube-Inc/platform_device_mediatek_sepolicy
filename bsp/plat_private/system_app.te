@@ -1,0 +1,53 @@
+# ==============================================
+# Common SEPolicy Rule
+# =================
+
+# Date : 2016/02/26
+# Operation: BSP C2K test case support
+# Purpose: allow atci to use NSIOT firewall
+# Package: com.mediatek.atci.service
+# allow system_app netd_socket:sock_file write;
+
+# Date : WK17.29
+# Operation : Migration
+# Purpose: Allow to get DNS system properties
+set_prop(system_app, net_dns_prop);
+
+# Date: 2016/11/10
+# Purpose: [MDM] Modem monitor config
+# Package Name: com.mediatek.mdmconfig
+set_prop(system_app, config_prop);
+
+# Date : 2018/06/21
+# Operation : P Migration
+# Purpose : Allow AtciService to set ATCI property
+set_prop(system_app, mtk_atci_sys_prop);
+
+# Date : 2018/07/19
+# Operation : P Migration
+# Purpose : Allow to get AAL property
+get_prop(system_app, mtk_aal_prop);
+
+# Date: 2019/02/14
+# Purpose: Permission Control configure
+# Package Name: com.mediatek.security
+set_prop(system_app, mtk_permission_control_prop);
+
+# Date : WK19.22
+# Purpose : access gpu hal
+hal_client_domain(system_app, hal_gpu)
+
+# Date : 2019/05/28
+# Operation : Q Migration
+# Purpose : allow to get mtk_cta_set and mtk_cta_support property
+get_prop(system_app, mtk_cta_set_prop);
+
+# Date : 2019/06/03
+# Operation : Q Migration split build
+# Purpose : allow to get mtk_rsc_sys_prop
+get_prop(system_app, mtk_rsc_sys_prop);
+
+# Date: 2019/07/23
+# Purpose: allow to read init.svc.md_monitor property for calling SystemService.waitForState()
+# Package Name: com.mediatek.mdmconfig
+get_prop(system_app, init_svc_md_monitor_prop)

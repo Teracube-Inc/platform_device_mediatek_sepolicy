@@ -1,0 +1,10 @@
+# ==============================================
+# Policy File of /system/bin/viarild Executable File 
+
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+typeattribute viarild mtkimsapdomain;
+typeattribute statusd mtkimsapdomain;
+

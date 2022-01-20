@@ -1,0 +1,15 @@
+# Date : 2017/10/24
+# Operation: SQC
+# Purpose : Allow powerHAL to access dfps
+allow mtk_hal_power mtk_hal_dfps:binder call;
+hal_client_domain(mtk_hal_power, hal_dfps);
+
+# Date : 2018/9/10
+# Operation: netdagnt
+allow mtk_hal_power mtk_hal_netdagent_hwservice:hwservice_manager find;
+allow mtk_hal_power netdagent:binder call;
+
+# Date : 2019/07/19
+# Operation: NwkOpt
+allow mtk_hal_power mtk_hal_nwk_opt:binder call;
+hal_client_domain(mtk_hal_power, hal_nwk_opt);

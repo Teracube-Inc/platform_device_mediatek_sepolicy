@@ -1,0 +1,12 @@
+# ==============================================
+# Policy File of /system/bin/em_svr Executable File
+
+# ==============================================
+# Common SEPolicy Rule
+# ==============================================
+
+
+# Date: WK1823
+# Purpose: Rsc switch
+allow em_svr para_block_device:blk_file write;
+

@@ -1,0 +1,8 @@
+# ==============================================
+# Common SEPolicy Rule
+# ============
+
+# Date : WK19.22
+# Purpose : access gpu hal
+hal_client_domain(bootanim, hal_gpu)
+
